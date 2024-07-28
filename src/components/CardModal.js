@@ -7,18 +7,18 @@ function Card({ item, onClick }) {
 
   return (
     <button
-      className="bg-white rounded-lg shadow-xl overflow-hidden w-72 mb-5 cursor-pointer text-left transition-transform transform hover:scale-105"
+      className="bg-white border-slate-900 border-2 rounded-lg shadow-xl overflow-hidden w-56 mb-5 cursor-pointer text-left transition-transform transform hover:scale-105"
       onClick={onClick}
     >
       <img src={`data:image/jpeg;base64,${item.img}`} className="w-full h-auto" alt="Imagem capturada" />
-      <div className="p-4">
-        <div className="flex items-center text-gray-700 mb-2">
+      <div className="p-2">
+        <div className="flex items-center text-gray-700 mb-1">
           <FaCalendarAlt className="mr-2 text-blue-500" />
-          <p className="text-md font-semibold">{formattedDate || 'Data não disponível'}</p>
+          <p className="text-xs font-semibold">{formattedDate || 'Data não disponível'} - UTC</p>
         </div>
         <div className="flex items-center text-gray-700">
           <FaMapMarkerAlt className="mr-2 text-blue-500" />
-          <p className="text-md">{item.station}</p>
+          <p className="text-xs">{item.station}</p>
         </div>
       </div>
     </button>
@@ -48,7 +48,7 @@ function Modal({ item, onClose }) {
         <div className="p-4">
           <div className="flex items-center justify-center text-gray-700 mb-2">
             <FaCalendarAlt className="mr-2 text-blue-500" />
-            <p className="text-md font-semibold">{formattedDate || 'Data não disponível'}</p>
+            <p className="text-md font-semibold ">{formattedDate || 'Data não disponível'} UTC</p>
           </div>
           <div className="flex items-center justify-center text-gray-700">
             <FaMapMarkerAlt className="mr-2 text-blue-500" />
