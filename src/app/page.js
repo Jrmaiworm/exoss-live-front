@@ -123,9 +123,9 @@ export default function HomePage() {
       {selectedItem && <Modal item={selectedItem} onClose={handleCloseModal} />}
       <button
         onClick={handleNavigateHome}
-        className="fixed bottom-4 right-4 bg-blue-500 text-white p-3 rounded-full shadow-lg hover:bg-blue-600 transition duration-300"
+        className="fixed bottom-4 right-4 bg-blue-500 text-white w-14 h-14 rounded-full shadow-lg hover:bg-blue-600 transition duration-300"
       >
-        Voltar para Home
+        ↑
       </button>
     </>
   );

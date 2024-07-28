@@ -41,8 +41,8 @@ export default function Home() {
         backgroundImage: `url(https://storage.googleapis.com/production-hostgator-brasil-v1-0-8/058/830058/2aXnw63K/c76167d8499e49d78fe5f66c94396bc4)`,
       }}
     >
-      <div className="flex flex-col flex-1 shadow-lg rounded-lg bg-gray-800 h-full max-w-5xl p-8 overflow-auto">
-        <Header />
+      <div className="flex flex-col flex-1 shadow-lg rounded-lg bg-gray-800 h-full max-w-3xl p-8 overflow-auto">
+        {/* <Header /> */}
         <div className="relative flex flex-1 bg-gray-700 flex-col rounded-lg p-8 overflow-auto">
           <form
             onSubmit={collectData}
@@ -56,7 +56,7 @@ export default function Home() {
               value={login}
               onChange={(e) => setLogin(e.target.value)}
               placeholder="Login"
-              className="w-1/3 p-2 mb-4 bg-gray-800 text-white rounded"
+              className="w-2/3 p-2 mb-4 bg-gray-800 text-white rounded"
             />
             <input
               id="password"
@@ -65,7 +65,7 @@ export default function Home() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Senha"
-              className="w-1/3 p-2 mb-4 bg-gray-800 text-white rounded"
+              className="w-2/3 p-2 mb-4 bg-gray-800 text-white rounded"
             />
             <button
               type="submit"

@@ -10,7 +10,7 @@ export default function Header() {
           width={100}
           height={50}
           className="w-20 mb-2 flex hover:cursor-pointer"
-          src="https://exoss.imo.net/imo/img/org/exo/logos/exoss.png"
+          src="/exoss.png"
           alt="Exoss Logo"
         />
       </Link>
