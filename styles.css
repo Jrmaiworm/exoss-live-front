@@ -1,0 +1,14 @@
+/* Estilo para o checkbox */
+input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+  }
+  
+  /* Cor quando o checkbox está marcado */
+  input[type="checkbox"]:checked {
+    background-color: #4CAF50; /* Mude para a cor desejada */
+    border: none;
+    outline: none;
+  }
+  

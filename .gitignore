@@ -1,0 +1,60 @@
+# Node modules
+node_modules/
+
+# Build output
+.next/
+out/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dependency directories
+node_modules/
+.pnp
+.pnp.js
+
+# Testing
+coverage/
+
+# Next.js files
+*.next
+
+# Static files
+/static
+/static/*
+
+# Build output
+.next
+out
+
+# Local env files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Miscellaneous
+.DS_Store
+*.pem
+*.lock
+
+# VS Code
+.vscode/
+
+# JetBrains IDEs
+.idea/
+
+# Sentry sourcemaps
+.sentryclirc
+
+# Compiled binary addons (https://github.com/npm/npm/issues/16379)
+build/Release
+
+# Package lockfiles
+package-lock.json
+yarn.lock
