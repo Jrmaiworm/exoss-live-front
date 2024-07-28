@@ -1,73 +1,13 @@
 "use client";
-import { Card, Modal } from '@/components/CardModal';
 import Header from '@/components/header';
 import Relogio from '@/components/relogio';
-import React, { useState, useEffect } from 'react';
+import ListaCapturas from '@/components/listaCapturas';
+import ListaEstacoes from '@/components/listaEstacoes';
+import React from 'react';
 import { useRouter } from 'next/navigation';
 
 export default function HomePage() {
-  const [data, setData] = useState([]);
-  const [selectedItem, setSelectedItem] = useState(null);
-  const [page, setPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
-  const [limit, setLimit] = useState(20);
-  const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
-
-  useEffect(() => {
-    async function fetchData() {
-      setIsLoading(true);
-      try {
-        const response = await fetch(`http://177.70.102.109:3037/capture?page=${page}&limit=${limit}`);
-        const result = await response.json();
-        setData(result.results);
-        setTotalPages(result.totalPages);
-      } catch (error) {
-        console.error('Erro ao buscar os dados:', error);
-      }
-      setIsLoading(false);
-    }
-
-    fetchData();
-
-    const intervalId = setInterval(fetchData, 120000);
-    
-    return () => clearInterval(intervalId);
-  }, [page, limit]);
-
-  const handleCardClick = (item) => {
-    setSelectedItem(item);
-  };
-
-  const handleCloseModal = () => {
-    setSelectedItem(null);
-  };
-
-  const handlePrevPage = () => {
-    if (page > 1) {
-      setPage(page - 1);
-    }
-  };
-
-  const handleNextPage = () => {
-    if (page < totalPages) {
-      setPage(page + 1);
-    }
-  };
-
-  const handleRefresh = () => {
-    async function fetchData() {
-      try {
-        const response = await fetch(`http://177.70.102.109:3037/capture?page=${page}&limit=${limit}`);
-        const result = await response.json();
-        setData(result.results);
-        setTotalPages(result.totalPages);
-      } catch (error) {
-        console.error('Erro ao buscar os dados:', error);
-      }
-    }
-    fetchData();
-  };
 
   const handleNavigateHome = () => {
     router.push('/');
@@ -81,46 +21,20 @@ export default function HomePage() {
           backgroundImage: `url(https://storage.googleapis.com/production-hostgator-brasil-v1-0-8/058/830058/2aXnw63K/c76167d8499e49d78fe5f66c94396bc4)`,
         }}
       >
-        <div className="flex flex-col flex-1 shadow-lg rounded-lg bg-gray-700 h-full max-w-98% max-h-95vh p-0 overflow-auto">
+        <div className="flex flex-col shadow-lg rounded-lg bg-gray-700 h-full">
           <Header />
           <Relogio />
-          <button
-            onClick={handleRefresh}
-            className="self-end m-2 p-2 bg-gray-800 text-white rounded hover:bg-gray-600 transition duration-300"
-          >
-            Atualizar
-          </button>
-          {isLoading ? (
-            <p className="self-center mt-5">Carregando...</p>
-          ) : (
-            <div className="relative flex flex-col flex-1 bg-gray-700 rounded-lg items-center p-0 overflow-auto">
-              <div className="bg-gray-700 flex mb-4 overflow-auto w-full flex-wrap gap-4 justify-center">
-                {data.map((item) => (
-                  <Card key={item.url} item={item} onClick={() => handleCardClick(item)} />
-                ))}
-              </div>
-              <div className="flex justify-center gap-4 mb-4">
-                <button
-                  className="bg-gray-800 text-white rounded px-4 py-2 hover:bg-gray-600 transition duration-300"
-                  onClick={handlePrevPage}
-                  disabled={page === 1}
-                >
-                  Anterior
-                </button>
-                <p className="self-center">Página {page} de {totalPages}</p>
-                <button
-                  className="bg-gray-800 text-white rounded px-4 py-2 hover:bg-gray-600 transition duration-300"
-                  onClick={handleNextPage}
-                  disabled={page === totalPages}
-                >
-                  Próximo
-                </button>
-              </div>
+          <div className="flex flex-col md:flex-row w-full ">
+            <div className="flex-col w-1/5 p-4">
+              <ListaEstacoes />
             </div>
-          )}
+            <div className="w-full md:w-4/5 p-4">
+              <ListaCapturas />
+            </div>
+            
+          </div>
         </div>
       </div>
-      {selectedItem && <Modal item={selectedItem} onClose={handleCloseModal} />}
       <button
         onClick={handleNavigateHome}
         className="fixed bottom-4 right-4 bg-blue-500 text-white w-14 h-14 rounded-full shadow-lg hover:bg-blue-600 transition duration-300"
