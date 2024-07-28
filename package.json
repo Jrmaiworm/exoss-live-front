@@ -14,9 +14,9 @@
     "react-router-dom": "^6.2.1"
   },
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3030",
     "build": "next build",
-    "start": "next start",
+    "start": "PORT=3030 next start",
     "lint": "next lint"
   }
 }
